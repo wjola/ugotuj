@@ -1,0 +1,59 @@
+.recipe-form {
+    font-size: 2rem;
+    font-weight: 400;
+
+    &__element {
+        counter-increment: form-counter;
+        display: flex;
+        flex-direction: column;
+        margin-left: 5rem;
+        position: relative;
+
+        & p:first-child {
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        &::before {
+            position: absolute;
+            content: "";
+            top: -3px;
+            left: calc(-6rem - 3px);
+            width: calc(4rem + 6px);
+            height: calc(4rem + 6px);
+            border-radius: 10rem;
+            background-image: linear-gradient(to top, rgba(225, 119, 66, 0.89), #cc185d);
+        }
+
+        &::after {
+            background-color: white;
+            border: 3px solid transparent;
+            border-radius: 10rem;
+            color: #cc185d;
+            content: counter(form-counter);
+            font-size: 3rem;
+            font-weight: 600;
+            height: 4rem;
+            left: -6rem;
+            line-height: 3.5rem;
+            position: absolute;
+            text-align: center;
+            top: 0rem;
+            width: 4rem;
+        }
+    }
+}
+
+.input__category {
+    opacity: 0;
+    position: fixed;
+}
+
+input[name="category"]:checked + label {
+    outline: 2px dashed #cc185d;
+    outline-offset: .8rem;
+}
+
+.category__list {
+    display: flex;
+}

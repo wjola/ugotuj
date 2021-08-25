@@ -8,7 +8,16 @@
 }
 
 .category {
+    list-style-type: none;
     width: 10rem;
+
+    & label {
+        display: inline-block;
+    }
+
+    &--small {
+        width: 5rem;
+    }
 
     & + & {
         margin-left: 4rem;
@@ -22,6 +31,12 @@
         margin-bottom: 0.8rem;
         transition: transform 0.2s ease-out;
         width: 100%;
+    }
+
+    &__caption {
+        font-size: 2rem;
+        font-weight: 400;
+        text-align: center;
     }
 
     &__button {
