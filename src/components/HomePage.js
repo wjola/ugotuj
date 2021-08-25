@@ -1,9 +1,11 @@
 import React from 'react';
+import CategoryNavigation from './CategoryNavigation';
 
 const HomePage = () => {
     return (
         <div>
-            HomePage
+            <CategoryNavigation />
+            <p>HomePage</p>
         </div>
     );
 }

@@ -10,9 +10,9 @@ import Header from '../components/Header';
 const AppRouter = () => {
     return (
         <BrowserRouter>
+            <Header />
             <Switch>
-                <Header />
-                <Route path="/" component={HomePage} exact />
+                <Route path="/" component={HomePage} exact={true} />
                 <Route path="/add" component={AddRecipePage} />
                 <Route path="/search" component={SearchPage} />
                 <Route path="/liked" component={LikedRecipesPage} />
