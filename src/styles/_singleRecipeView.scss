@@ -1,0 +1,138 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  left: 0;
+  width: 100vw;
+  padding: 4rem;
+  position: fixed;
+  top: 0;
+}
+
+.recipe-container {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.recipe__photo-container {
+  align-items: center;
+  background-image: linear-gradient(
+      to top left,
+      #cc185de1,
+      rgba(252, 237, 34, 0.9)
+    ),
+    url(../../images/tlo.png);
+  display: flex;
+  flex-basis: 45%;
+  justify-content: center;
+}
+
+.recipe__text-container {
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: column;
+  flex-grow: 2;
+  flex-shrink: 1;
+  padding: 4rem 2rem 4rem 6rem;
+}
+
+.recipe__name {
+  align-self: stretch;
+  background: linear-gradient(to top, rgba(225, 119, 66, 0.89), #cc185de1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 6.5rem;
+  margin-bottom: 3rem;
+  width: 90%;
+}
+
+.recipe__details {
+  overflow-y: scroll;
+  padding-right: 1rem;
+  scrollbar-color: #cc185de1 white;
+  scrollbar-width: thin;
+}
+
+.recipe__ingredients {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.recipe__heading {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+}
+
+.ingredients__column {
+  flex: 45%;
+}
+
+.recipe__list {
+  color: var(--color-font);
+  font-size: 1.8rem;
+  font-weight: 400;
+  list-style: none;
+
+  &--ingredients > li {
+    margin-left: 1.5rem;
+    position: relative;
+
+    &:not(:last-of-type) {
+      margin-bottom: 3px;
+    }
+
+    &::before {
+      content: "-";
+      left: -1.5rem;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  &--steps {
+    counter-reset: recipe-steps-counter;
+    flex-grow: 1;
+    height: 75%;
+    margin-top: 2rem;
+    overflow: hidden;
+
+    & > li {
+      counter-increment: recipe-steps-counter;
+
+      &::before {
+        content: counter(recipe-steps-counter) "/";
+        display: inline-block;
+        font-size: 2rem;
+        font-style: italic;
+        font-weight: 100;
+        margin-bottom: -7px;
+        margin-right: 0.8rem;
+      }
+    }
+  }
+}
+
+.button--close {
+  background-image: linear-gradient(
+    to top,
+    rgba(225, 119, 66, 0.89),
+    #cc185de1
+  );
+  height: 4rem;
+  mask-image: url(../../images/close1.svg);
+  -webkit-mask-image: url(../../images/close1.svg);
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  width: 4rem;
+  z-index: 99;
+}

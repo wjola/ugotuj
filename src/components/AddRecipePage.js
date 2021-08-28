@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import ReactDOM from "react-dom";
 import { categories } from "../utils/categories";
 import CategoryFormInput from "./CategoryFormInput";
 import MultipleFormInput from "./MultipleFormInput";
 import FileInput from "./FileInput";
+import SingleRecipeView from "./SingleRecipeView";
 
 const AddRecipePage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [recipeName, setRecipeName] = useState("");
   const [chosenCategory, setChosenCategory] = useState("");
   const [currentSpice, setCurrentSpice] = useState("");
@@ -37,6 +40,10 @@ const AddRecipePage = () => {
 
   const chooseCategory = (category) => {
     setChosenCategory(category);
+  };
+
+  const displayModal = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -117,6 +124,7 @@ const AddRecipePage = () => {
           className="button button--empty"
           type="button"
           formTarget="_self"
+          onClick={displayModal}
         >
           Podgląd
         </button>
@@ -124,6 +132,18 @@ const AddRecipePage = () => {
           Wyczyść formularz
         </button>
       </section>
+      <SingleRecipeView
+        isOpen={isModalOpen}
+        recipe={{
+          name: recipeName,
+          photo: file,
+          category: chooseCategory,
+          spices,
+          ingredients,
+          steps,
+          comments,
+        }}
+      />
     </main>
   );
 };
