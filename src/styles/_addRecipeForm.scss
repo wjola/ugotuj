@@ -6,10 +6,10 @@
     counter-increment: form-counter;
     display: flex;
     flex-direction: column;
-    margin: 0 0 5rem 2rem;
+    margin: 0 0 3rem 2rem;
     position: relative;
 
-    & p:first-child {
+    & h5 {
       font-weight: 600;
       margin-bottom: 3rem;
     }

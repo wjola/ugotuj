@@ -1,44 +1,74 @@
 import React, { useState } from "react";
 import { categories } from "../utils/categories";
 import CategoryFormInput from "./CategoryFormInput";
-import TrashIcon from "../../images/trash.svg";
+import MultipleFormInput from "./MultipleFormInput";
+import FileInput from "./FileInput";
 
 const AddRecipePage = () => {
   const [spices, setSpices] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [steps, setSteps] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [file, setFile] = useState(null);
 
-  const addSpice = (e) => {
+  const addElement = (e) => {
     e.preventDefault();
-    const spice = e.target.parentNode.firstChild.value;
-    if (spice !== "") {
-      setSpices([...spices, spice]);
+    const parentLiElement = e.target.closest("li");
+    const elementType = parentLiElement.dataset.type;
+    const newElement = e.target.parentNode.firstChild.value;
+
+    if (newElement !== "") {
+      switch (elementType) {
+        case "spices":
+          setSpices([...spices, newElement]);
+          break;
+        case "ingredients":
+          setIngredients([...ingredients, newElement]);
+          break;
+        case "steps":
+          setSteps([...steps, newElement]);
+          break;
+        case "comments":
+          setComments([...comments, newElement]);
+          break;
+        default:
+          return;
+      }
       e.target.parentNode.firstChild.value = "";
     }
   };
 
-  const removeSpice = (e) => {
+  const removeElement = (e) => {
     e.preventDefault();
-    const spiceElement = e.target.closest("li");
-    setSpices(spices.filter((spice) => spice !== spiceElement.textContent));
-  };
+    const liElement = e.target.closest("li");
+    const elementType = e.target.closest(".recipe-form__element").dataset.type;
 
-  const addIngredient = (e) => {
-    e.preventDefault();
-    const ingredient = e.target.parentNode.firstChild.value;
-    if (ingredient !== "") {
-      setIngredients([...ingredients, ingredient]);
-      e.target.parentNode.firstChild.value = "";
+    switch (elementType) {
+      case "spices":
+        setSpices(spices.filter((spice) => spice !== liElement.textContent));
+        return;
+      case "ingredients":
+        setIngredients(
+          ingredients.filter(
+            (ingredient) => ingredient !== liElement.textContent
+          )
+        );
+        return;
+      case "steps":
+        setSteps(steps.filter((step) => step !== liElement.textContent));
+        return;
+      case "comments":
+        setComments(
+          comments.filter((comment) => comment !== liElement.textContent)
+        );
+        return;
+      default:
+        return;
     }
   };
 
-  const removeIngredient = (e) => {
-    e.preventDefault();
-    const ingredientElement = e.target.closest("li");
-    setIngredients(
-      ingredients.filter(
-        (ingredient) => ingredient !== ingredientElement.textContent
-      )
-    );
+  const storeFile = (file) => {
+    setFile(file);
   };
 
   return (
@@ -46,7 +76,7 @@ const AddRecipePage = () => {
       <form className="recipe-form">
         <ol>
           <li className="recipe-form__element">
-            <p>Wybierz kategorię</p>
+            <h5>Wybierz kategorię</h5>
             <ul className="category__list">
               {categories.map((category) => {
                 return (
@@ -61,69 +91,45 @@ const AddRecipePage = () => {
             </ul>
           </li>
           <li className="recipe-form__element">
-            <p>Podaj nazwę potrawy</p>
+            <h5>Podaj nazwę potrawy</h5>
             <input
               type="text"
               className="recipe-form__input"
               name="recipe_name"
             />
           </li>
+          <MultipleFormInput
+            savedData={spices}
+            onAddClick={addElement}
+            onRemoveClick={removeElement}
+            headerText={"Podaj przyprawy"}
+            dataType={"spices"}
+          />
+          <MultipleFormInput
+            savedData={ingredients}
+            onAddClick={addElement}
+            onRemoveClick={removeElement}
+            headerText={"Podaj składniki"}
+            dataType={"ingredients"}
+          />
+          <MultipleFormInput
+            savedData={steps}
+            onAddClick={addElement}
+            onRemoveClick={removeElement}
+            headerText={"Podaj kroki przygotowania"}
+            dataType={"steps"}
+          />
+          <MultipleFormInput
+            savedData={comments}
+            onAddClick={addElement}
+            onRemoveClick={removeElement}
+            headerText={"Dodaj komentarze do przepisu"}
+            dataType={"comments"}
+          />
           <li className="recipe-form__element">
-            <p>Podaj przyprawy</p>
-            <div>
-              <input type="text" className="recipe-form__input" name="spice" />
-              <button className="button--add" onClick={addSpice}>
-                +
-              </button>
-            </div>
-            <ul className="ingredients__dynamic-list">
-              {spices.map((spice, index) => {
-                return (
-                  <li className="ingredients__item" key={index}>
-                    {spice}
-                    <button className="button--remove" onClick={removeSpice}>
-                      <img
-                        src={TrashIcon}
-                        className="button--remove__icon"
-                        alt="Usuń"
-                      />
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </li>
-          <li className="recipe-form__element">
-            <p>Podaj składniki</p>
-            <div>
-              <input
-                type="text"
-                className="recipe-form__input"
-                name="ingredient"
-              />
-              <button className="button--add" onClick={addIngredient}>
-                +
-              </button>
-            </div>
-            <ul className="ingredients__dynamic-list">
-              {ingredients.map((ingredient, index) => {
-                return (
-                  <li className="ingredients__item" key={"i" + index}>
-                    {ingredient}
-                    <button
-                      className="button--remove"
-                      onClick={removeIngredient}
-                    >
-                      <img
-                        src={TrashIcon}
-                        className="button--remove__icon"
-                        alt="Usuń"
-                      />
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+            <h5>Załącz zdjęcie</h5>
+            <FileInput uploadedFile={file} storeFile={storeFile} />
+            {file && console.log(file)}
           </li>
         </ol>
       </form>
