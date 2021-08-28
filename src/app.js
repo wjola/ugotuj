@@ -1,7 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import AppRouter from './routes/AppRouter';
-import './styles/main.scss';
+import React from "react";
+import ReactDOM from "react-dom";
+import { QueryClientProvider, QueryClient } from "react-query";
+import AppRouter from "./routes/AppRouter";
+import "./styles/main.scss";
 
+const queryClient = new QueryClient();
 
-ReactDOM.render(<AppRouter />, document.getElementById('root'));
+const jsx = (
+  <QueryClientProvider client={queryClient}>
+    <AppRouter />
+  </QueryClientProvider>
+);
+ReactDOM.render(jsx, document.getElementById("root"));

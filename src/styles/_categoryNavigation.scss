@@ -1,85 +1,96 @@
 .category-nav {
-    align-items: flex-end;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding-top: 2rem;
+  align-items: flex-end;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding-top: 2rem;
 }
 
 .category {
-    list-style-type: none;
-    width: 10rem;
+  list-style-type: none;
+  width: 10rem;
 
-    & label {
-        display: inline-block;
+  & label {
+    display: inline-block;
+  }
+
+  &--small {
+    width: 5rem;
+  }
+
+  & + & {
+    margin-left: 4rem;
+  }
+
+  &:hover &__icon {
+    transform: rotate(-4deg) scale(1.1);
+  }
+
+  &__icon {
+    margin-bottom: 0.8rem;
+    transition: transform 0.2s ease-out;
+    width: 100%;
+  }
+
+  &__caption {
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  &__button {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 10rem 10rem 0 0;
+    cursor: pointer;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    font-family: inherit;
+    font-size: 2.5rem;
+    font-weight: 600;
+    justify-content: center;
+    padding: 3rem 2rem 1.5rem;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+
+    &:hover {
+      background-color: #d23370;
+      color: white;
     }
 
-    &--small {
-        width: 5rem;
+    &:hover .category__icon {
+      filter: invert(100%);
     }
 
-    & + & {
-        margin-left: 4rem;
+    &:hover::before,
+    &:hover::after {
+      bottom: 0;
+      content: "";
+      height: 3rem;
+      position: absolute;
+      width: 3rem;
     }
 
-    &:hover &__icon {
-        transform: rotate(-4deg) scale(1.1);
+    &:hover::before {
+      background-image: radial-gradient(
+        circle at top left,
+        transparent 72%,
+        #d23370 74%
+      );
+      left: -3rem;
     }
 
-    &__icon {
-        margin-bottom: 0.8rem;
-        transition: transform 0.2s ease-out;
-        width: 100%;
+    &:hover::after {
+      background-image: radial-gradient(
+        circle at top right,
+        transparent 72%,
+        #d23370 74%
+      );
+      right: -3rem;
     }
-
-    &__caption {
-        font-size: 2rem;
-        font-weight: 400;
-        text-align: center;
-    }
-
-    &__button {
-        align-items: center;
-        background-color: transparent;
-        border: none;
-        border-radius: 10rem 10rem 0 0;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        font-family: inherit;
-        font-size: 2.5rem;
-        font-weight: 600;
-        justify-content: center;
-        padding: 3rem 2rem 1.5rem;
-        position: relative;
-        width: 100%;
-
-        &:hover {
-            background-color: #D23370;
-            color: white;
-        }
-
-        &:hover .category__icon {
-            filter: invert(100%);
-        }
-
-        &:hover::before, &:hover::after {
-            bottom: 0;
-            content: '';
-            height: 3rem;
-            position: absolute;
-            width: 3rem;
-        }
-
-        &:hover::before {
-            background-image: radial-gradient(circle at top left, transparent 72%, #D23370 74%);
-            left: -3rem;
-        }
-
-        &:hover::after {
-            background-image: radial-gradient(circle at top right, transparent 72%, #D23370 74%);
-            right: -3rem;
-        }
-    }
+  }
 }
