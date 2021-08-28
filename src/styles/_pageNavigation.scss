@@ -1,27 +1,28 @@
 .page-nav {
-    display: flex;
-    justify-content: center;
-    margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
 }
 
 .page-nav__element {
-    align-items: center;
-    background-color: white;
-    border-radius: 3rem;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-    color: black;
-    display: flex;
-    font-size: 2rem;
-    font-weight: 600;
-    padding: 1rem 3rem;
-    text-decoration: none;
+  align-items: center;
+  background-color: white;
+  border-radius: 3rem;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  color: black;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  position: relative;
+  text-decoration: none;
 
-    & + & {
-        margin-left: 3rem;
-    }
+  & + & {
+    margin-left: 3rem;
+  }
 }
 
 .page-nav__icon {
-    height: 3rem;
-    margin-left: 2rem;
+  height: 3rem;
+  margin-left: 2rem;
 }

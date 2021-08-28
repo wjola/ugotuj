@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import DownloadIcon from "../../images/download.svg";
 
 const FileInput = ({ uploadedFile, storeFile }) => {
-  const [isFileUploaded, setIsFileUploaded] = useState(false);
   const [dragging, setDragging] = useState(false);
   const [filePreview, setFilePreview] = useState();
   const [isAlertNeeded, setIsAlertNeeded] = useState(false);
@@ -43,7 +42,6 @@ const FileInput = ({ uploadedFile, storeFile }) => {
       setFilePreview(r.target.result);
     };
     reader.readAsDataURL(file);
-    setIsFileUploaded(true);
     isAlertNeeded && setIsAlertNeeded(false);
   };
 
@@ -56,7 +54,6 @@ const FileInput = ({ uploadedFile, storeFile }) => {
       setFilePreview(r.target.result);
     };
     reader.readAsDataURL(file);
-    setIsFileUploaded(true);
     isAlertNeeded && setIsAlertNeeded(false);
   };
 
@@ -75,6 +72,12 @@ const FileInput = ({ uploadedFile, storeFile }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!uploadedFile) {
+      setFilePreview(null);
+    }
+  }, [uploadedFile]);
+
   return (
     <div
       ref={dropRef}
@@ -89,19 +92,19 @@ const FileInput = ({ uploadedFile, storeFile }) => {
         onChange={handleFileInput}
       />
       <label className="file__label" htmlFor="file">
-        {!isFileUploaded && (
+        {!uploadedFile && (
           <img className="file__img file__icon" src={DownloadIcon} />
         )}
         {!!filePreview && (
           <img className="file__img file__preview" src={filePreview} />
         )}
-        {!isFileUploaded && (
+        {!uploadedFile && (
           <p className="file__text">
             <strong>Wybierz plik </strong>
             lub przenieś go tutaj.
           </p>
         )}
-        {isFileUploaded && (
+        {!!uploadedFile && (
           <p className="file__text">
             Wybrano plik
             <strong className="file__name">{uploadedFile.name}</strong>

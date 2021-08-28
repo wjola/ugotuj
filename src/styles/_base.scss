@@ -31,4 +31,37 @@ body {
   border-radius: 1rem;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
   padding: 4rem 6rem;
+  width: 100%;
+}
+
+.button {
+  background-color: #cc185d;
+  border: 3px solid #cc185d;
+  border-radius: 10rem;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-left: 5rem;
+  margin-top: 3rem;
+  padding: 1.5rem 4rem;
+  transition: background-color 0.2s, color 0.2s;
+
+  &--empty {
+    background-color: white;
+    color: #1a1a1a;
+
+    &:hover {
+      background-color: #cc185d;
+      color: white;
+    }
+  }
+}
+
+.main-container {
+  display: flex;
+  padding: 0 4rem 4rem;
+  width: 100%;
 }

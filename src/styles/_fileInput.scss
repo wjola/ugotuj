@@ -23,6 +23,10 @@
     & .file__label {
       color: white;
     }
+
+    & .file__icon {
+      filter: invert(100%);
+    }
   }
 }
 

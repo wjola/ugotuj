@@ -1,7 +1,10 @@
 .category-recipes-container {
-    background-color: white;
-    background-image: linear-gradient(to top, rgba(225, 119, 66, 0.89), #cc185de1),                 linear-gradient(to top, transparent 97%, white 99%), url(../../images/tlo.png);
-    height: 30rem;
-    padding: 4rem;
-    width: 100%;
+  background-color: white;
+  background-image: linear-gradient(to top, rgba(225, 119, 66, 0.89), #cc185de1),
+    linear-gradient(to top, transparent 97%, white 99%),
+    url(../../images/tlo.png);
+  flex: 1;
+  height: 30rem;
+  padding: 4rem;
+  width: 100%;
 }

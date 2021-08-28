@@ -1,7 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const LikedRecipesPage = () => {
-    return (<></>);
-}
+  return (
+    <main className="main-container">
+      <section className="section-content"></section>
+    </main>
+  );
+};
 
 export default LikedRecipesPage;

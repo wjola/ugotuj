@@ -1,6 +1,12 @@
 import React from "react";
 
-const CategoryFormInput = ({ displayedName, categoryName, iconPath }) => {
+const CategoryFormInput = ({
+  displayedName,
+  categoryName,
+  iconPath,
+  chooseCategory,
+  chosenCategory,
+}) => {
   return (
     <li className="category category--small">
       <input
@@ -9,6 +15,8 @@ const CategoryFormInput = ({ displayedName, categoryName, iconPath }) => {
         id={categoryName}
         name="category"
         value={categoryName}
+        onChange={(e) => e.target.checked && chooseCategory(e.target.value)}
+        checked={chosenCategory === categoryName}
       />
       <label htmlFor={categoryName}>
         <figure>
