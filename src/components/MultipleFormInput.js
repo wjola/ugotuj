@@ -9,6 +9,17 @@ const MultipleFormInput = ({
   currentValue,
   setCurrentValue,
 }) => {
+  const addInput = () => {
+    setSavedData([...savedData, currentValue]);
+    setCurrentValue("");
+  };
+
+  const handleInputKeyPress = (e) => {
+    if (e.key === "Enter") {
+      addInput();
+    }
+  };
+
   return (
     <li className="recipe-form__element" data-type={dataType}>
       <h5>{headerText}</h5>
@@ -19,13 +30,13 @@ const MultipleFormInput = ({
           name="ingredient"
           value={currentValue}
           onChange={(e) => setCurrentValue(e.target.value)}
+          onKeyPress={handleInputKeyPress}
         />
         <button
           className="button--add"
           onClick={(e) => {
             e.preventDefault();
-            setSavedData([...savedData, currentValue]);
-            setCurrentValue("");
+            addInput();
           }}
         >
           +
