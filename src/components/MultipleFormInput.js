@@ -15,8 +15,16 @@ const MultipleFormInput = ({
   };
 
   const handleInputKeyPress = (e) => {
-    if (e.key === "Enter") {
+    e.stopPropagation();
+    if (e.key === "Enter" && currentValue !== "") {
       addInput();
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value.trim();
+    if (inputValue !== "") {
+      setCurrentValue(e.target.value);
     }
   };
 
@@ -29,7 +37,7 @@ const MultipleFormInput = ({
           className="recipe-form__input"
           name="ingredient"
           value={currentValue}
-          onChange={(e) => setCurrentValue(e.target.value)}
+          onChange={handleInputChange}
           onKeyPress={handleInputKeyPress}
         />
         <button

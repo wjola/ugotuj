@@ -1,18 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { useHistory } from "react-router";
 
-const SingleRecipeView = ({ isOpen = true, recipe }) => {
+const SingleRecipeView = ({ isOpen = true, recipe, handleClose }) => {
   const portalTarget = document.getElementById("recipe-modal");
-  const history = useHistory();
-
-  const closeDialog = () => {
-    history.push(`/recipes/${recipe.category}`);
-  };
+  const [imgPreview, setImgPreview] = useState(null);
 
   const handleClickOutsideDialog = (e) => {
     if (e.target.classList[0] == "modal") {
-      closeDialog();
+      handleClose();
+    }
+  };
+
+  const getImagePreview = () => {
+    if (typeof recipe.photo === "string") {
+      setImgPreview(recipe.photo);
+    } else {
+      const reader = new FileReader();
+      reader.onload = (r) => {
+        setImgPreview(r.target.result);
+      };
+      reader.readAsDataURL(recipe.photo);
     }
   };
 
@@ -20,6 +27,8 @@ const SingleRecipeView = ({ isOpen = true, recipe }) => {
     if (isOpen) {
       document.addEventListener("click", handleClickOutsideDialog);
       document.body.style.overflow = "hidden";
+
+      getImagePreview();
     }
 
     return () => {
@@ -32,7 +41,9 @@ const SingleRecipeView = ({ isOpen = true, recipe }) => {
     if (isOpen) {
       document.addEventListener("click", handleClickOutsideDialog);
       document.body.style.overflow = "hidden";
-    } else {
+
+      getImagePreview();
+
       return () => {
         document.removeEventListener("click", handleClickOutsideDialog);
         document.body.style.overflow = "unset";
@@ -45,11 +56,11 @@ const SingleRecipeView = ({ isOpen = true, recipe }) => {
       <div className="recipe-container">
         <button
           className="button--close"
-          onClick={() => closeDialog()}
+          onClick={() => handleClose()}
         ></button>
         <div className="recipe__photo-container">
           <figure className="recipe__photo">
-            <img src={recipe.photo} />
+            <img src={imgPreview} />
           </figure>
         </div>
         <article className="recipe__text-container">

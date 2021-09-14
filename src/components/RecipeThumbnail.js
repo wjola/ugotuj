@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useHistory } from "react-router";
 import SingleRecipeView from "./SingleRecipeView";
 
 const RecipeThumbnail = ({ recipe }) => {
   const { recipeId } = useParams();
-  const shouldModalBeOpened = recipeId === recipe.id;
+  const history = useHistory();
+  const [shouldModalBeOpened, setShouldModalBeOpened] = useState(false);
+
+  useEffect(() => {
+    setShouldModalBeOpened(recipeId === recipe.id);
+  }, [recipeId]);
 
   return (
     <li className="thumbnail" data-id={recipe.id}>
@@ -14,7 +20,16 @@ const RecipeThumbnail = ({ recipe }) => {
           <figcaption className="thumbnail__name">{recipe.name}</figcaption>
         </figure>
       </Link>
-      {shouldModalBeOpened && <SingleRecipeView recipe={recipe} />}
+      {shouldModalBeOpened && (
+        <SingleRecipeView
+          isOpen={shouldModalBeOpened}
+          recipe={recipe}
+          handleClose={() => {
+            history.push(`/recipes/${recipe.category}`);
+            setShouldModalBeOpened(false);
+          }}
+        />
+      )}
     </li>
   );
 };

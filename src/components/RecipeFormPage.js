@@ -58,9 +58,14 @@ const RecipeFormPage = ({
     e.preventDefault();
     const recipeObject = createFormDataObject();
     onSubmit(recipeObject);
+    cleanUpForm();
   };
 
-  function createFormDataObject() {
+  const handleCloseRecipePreview = () => {
+    setIsModalOpen(false);
+  };
+
+  const createFormDataObject = () => {
     let formData = new FormData();
 
     formData.append("category", chosenCategory);
@@ -72,7 +77,7 @@ const RecipeFormPage = ({
     formData.append("comments", JSON.stringify(comments));
 
     return formData;
-  }
+  };
 
   return (
     <main className="main-container">
@@ -170,12 +175,13 @@ const RecipeFormPage = ({
         recipe={{
           name,
           photo: file,
-          category: chooseCategory,
+          category: chosenCategory,
           spices,
           ingredients,
           steps,
           comments,
         }}
+        handleClose={handleCloseRecipePreview}
       />
     </main>
   );
