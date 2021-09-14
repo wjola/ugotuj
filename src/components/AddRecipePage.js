@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import { categories } from "../utils/categories";
 import CategoryFormInput from "./CategoryFormInput";
 import MultipleFormInput from "./MultipleFormInput";

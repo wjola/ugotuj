@@ -1,5 +1,6 @@
 .modal {
   background-color: rgba(0, 0, 0, 0.7);
+  border: none;
   height: 100vh;
   left: 0;
   width: 100vw;
@@ -32,6 +33,34 @@
   justify-content: center;
 }
 
+.recipe__photo {
+  height: 60%;
+  position: relative;
+  width: 80%;
+
+  &::after {
+    content: "";
+    background-color: white;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    transform: rotate(-4deg);
+  }
+
+  & img {
+    border: 3px solid white;
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+}
+
 .recipe__text-container {
   display: flex;
   flex-basis: 50%;
@@ -52,6 +81,10 @@
   line-height: 6.5rem;
   margin-bottom: 3rem;
   width: 90%;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 }
 
 .recipe__details {
@@ -127,6 +160,7 @@
     rgba(225, 119, 66, 0.89),
     #cc185de1
   );
+  cursor: pointer;
   height: 4rem;
   mask-image: url(../../images/close1.svg);
   -webkit-mask-image: url(../../images/close1.svg);

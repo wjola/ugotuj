@@ -14,7 +14,15 @@ const AppRouter = () => {
       <Header />
       <Switch>
         <Route path="/" component={HomePage} exact={true} />
-        <Route path="/recipes/:category" component={CategoryRecipesPage} />
+        <Route
+          path="/recipes/:category"
+          component={CategoryRecipesPage}
+          exact={true}
+        />
+        <Route
+          path="/recipes/:category/:recipeId"
+          component={CategoryRecipesPage}
+        />
         <Route path="/add" component={AddRecipePage} />
         <Route path="/search" component={SearchPage} />
         <Route path="/liked" component={LikedRecipesPage} />

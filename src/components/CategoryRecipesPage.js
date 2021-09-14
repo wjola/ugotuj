@@ -6,7 +6,9 @@ const CategoryRecipesPage = (props) => {
   return (
     <main>
       <CategoryNavigation />
-      <CategoryRecipesView categoryName={props.match.params.category} />
+      <CategoryRecipesView
+        categoryName={(props.match && props.match.params.category) || ""}
+      />
     </main>
   );
 };

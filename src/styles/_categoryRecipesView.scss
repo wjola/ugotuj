@@ -4,7 +4,12 @@
     linear-gradient(to top, transparent 97%, white 99%),
     url(../../images/tlo.png);
   flex: 1;
-  height: 30rem;
   padding: 4rem;
   width: 100%;
+}
+
+.thumbnails-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  grid-gap: 2rem;
 }

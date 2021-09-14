@@ -1,14 +1,8 @@
 import React from "react";
-import CategoryNavigation from "./CategoryNavigation";
-import CategoryRecipesView from "./CategoryRecipesView";
+import CategoryRecipesPage from "./CategoryRecipesPage";
 
 const HomePage = () => {
-  return (
-    <div>
-      <CategoryNavigation />
-      <CategoryRecipesView />
-    </div>
-  );
+  return <CategoryRecipesPage />;
 };
 
 export default HomePage;

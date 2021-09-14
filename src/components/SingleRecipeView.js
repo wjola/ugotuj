@@ -1,12 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
+import { useHistory } from "react-router";
 
-const SingleRecipeView = ({ isOpen, recipe }) => {
-  return (
+const SingleRecipeView = ({ isOpen = true, recipe }) => {
+  const portalTarget = document.getElementById("recipe-modal");
+  const history = useHistory();
+
+  const closeDialog = () => {
+    history.push(`/recipes/${recipe.category}`);
+  };
+
+  const handleClickOutsideDialog = (e) => {
+    if (e.target.classList[0] == "modal") {
+      closeDialog();
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("click", handleClickOutsideDialog);
+    }
+
+    return document.removeEventListener("click", handleClickOutsideDialog);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("click", handleClickOutsideDialog);
+    } else {
+      return document.removeEventListener("click", handleClickOutsideDialog);
+    }
+  }, [isOpen]);
+
+  return ReactDOM.createPortal(
     <dialog open={isOpen} className="modal">
       <div className="recipe-container">
-        <button className="button--close"></button>
+        <button
+          className="button--close"
+          onClick={() => closeDialog()}
+        ></button>
         <div className="recipe__photo-container">
-          <figure className="recipe__photo-box">
+          <figure className="recipe__photo">
             <img src={recipe.photo} />
           </figure>
         </div>
@@ -44,7 +78,8 @@ const SingleRecipeView = ({ isOpen, recipe }) => {
           </div>
         </article>
       </div>
-    </dialog>
+    </dialog>,
+    portalTarget
   );
 };
 
