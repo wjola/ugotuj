@@ -6,14 +6,16 @@ const CategoryRecipesView = ({ categoryName = "" }) => {
   const { data, isLoading, refetch } = useFetchRecipes(categoryName);
 
   useEffect(() => {
-    refetch();
+    // refetch();
   }, [categoryName]);
 
   return (
     <main className="category-recipes-container">
       <section className="section-content">
         {isLoading && <p>Ładowanie..</p>}
-        {!categoryName && <p>Wybierz kategorię, żeby wyświetlić przepisy.</p>}
+        {!categoryName && !isLoading && (
+          <p>Wybierz kategorię, żeby wyświetlić przepisy.</p>
+        )}
         {!!categoryName && (
           <ul className="thumbnails-container">
             {data &&

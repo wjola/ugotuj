@@ -16,11 +16,11 @@ const PageNavigation = () => {
         <p>Dodaj przepis</p>
         <img src={AddIcon} className="page-nav__icon" />
       </NavLink>
-      <NavLink to="search" className="page-nav__element">
+      <NavLink to="/search" className="page-nav__element">
         <p>Wyszukaj</p>
         <img src={SearchIcon} className="page-nav__icon" />
       </NavLink>
-      <NavLink to="liked" className="page-nav__element">
+      <NavLink to="/liked" className="page-nav__element">
         <p>Ulubione</p>
         <img src={LikeIcon} className="page-nav__icon" />
       </NavLink>
