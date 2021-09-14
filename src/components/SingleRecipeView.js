@@ -19,16 +19,24 @@ const SingleRecipeView = ({ isOpen = true, recipe }) => {
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("click", handleClickOutsideDialog);
+      document.body.style.overflow = "hidden";
     }
 
-    return document.removeEventListener("click", handleClickOutsideDialog);
+    return () => {
+      document.removeEventListener("click", handleClickOutsideDialog);
+      document.body.style.overflow = "unset";
+    };
   }, []);
 
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("click", handleClickOutsideDialog);
+      document.body.style.overflow = "hidden";
     } else {
-      return document.removeEventListener("click", handleClickOutsideDialog);
+      return () => {
+        document.removeEventListener("click", handleClickOutsideDialog);
+        document.body.style.overflow = "unset";
+      };
     }
   }, [isOpen]);
 
