@@ -6,6 +6,12 @@ const useFetchRecipes = (category = "") => {
   );
 };
 
+const useFetchLikedRecipes = () => {
+  return useQuery("likedRecipes", () =>
+    fetch(`http://localhost:5000/recipes/liked`).then((res) => res.json())
+  );
+};
+
 const useSearchRecipes = (searchPhrase = "") => {
   return useQuery(
     "search",
@@ -27,4 +33,9 @@ const usePostRecipe = () => {
   });
 };
 
-export { useFetchRecipes, useSearchRecipes, usePostRecipe };
+export {
+  useFetchRecipes,
+  useFetchLikedRecipes,
+  useSearchRecipes,
+  usePostRecipe,
+};
