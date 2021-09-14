@@ -14,8 +14,7 @@ const MultipleFormInput = ({
     setCurrentValue("");
   };
 
-  const handleInputKeyPress = (e) => {
-    e.stopPropagation();
+  const handleInputKeyUp = (e) => {
     if (e.key === "Enter" && currentValue !== "") {
       addInput();
     }
@@ -38,7 +37,7 @@ const MultipleFormInput = ({
           name="ingredient"
           value={currentValue}
           onChange={handleInputChange}
-          onKeyPress={handleInputKeyPress}
+          onKeyUp={handleInputKeyUp}
         />
         <button
           className="button--add"
@@ -51,28 +50,29 @@ const MultipleFormInput = ({
         </button>
       </div>
       <ul className="ingredients__dynamic-list">
-        {savedData.map((dataElement, index) => {
-          return (
-            <li className="ingredients__item" key={"i" + index}>
-              {dataElement}
-              <button
-                className="button--remove"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setSavedData(
-                    savedData.filter((element) => element !== dataElement)
-                  );
-                }}
-              >
-                <img
-                  src={TrashIcon}
-                  className="button--remove__icon"
-                  alt="Usuń"
-                />
-              </button>
-            </li>
-          );
-        })}
+        {savedData.length > 0 &&
+          savedData.map((dataElement, index) => {
+            return (
+              <li className="ingredients__item" key={"i" + index}>
+                {dataElement}
+                <button
+                  className="button--remove"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSavedData(
+                      savedData.filter((element) => element !== dataElement)
+                    );
+                  }}
+                >
+                  <img
+                    src={TrashIcon}
+                    className="button--remove__icon"
+                    alt="Usuń"
+                  />
+                </button>
+              </li>
+            );
+          })}
       </ul>
     </li>
   );
