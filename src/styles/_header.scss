@@ -16,6 +16,14 @@
     margin: 0 auto;
     padding: 1rem 3rem;
     text-decoration: none;
+
+    &:hover .header__logo {
+      animation-direction: alternate;
+      animation-duration: 0.3s;
+      animation-name: wave;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
   }
 }
 
