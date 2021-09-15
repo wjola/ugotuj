@@ -94,6 +94,16 @@ const SingleRecipeView = ({ isOpen = true, recipe, handleClose }) => {
                 ))}
               </ol>
             </div>
+            {recipe.comments.length > 0 && (
+              <div className="recipe__comments">
+                <h3 className="recipe__heading">Komentarze</h3>
+                <ol className="recipe__list recipe__list--ingredients">
+                  {recipe.comments.map((item, index) => (
+                    <li key={`comments-${index}`}>{item}</li>
+                  ))}
+                </ol>
+              </div>
+            )}
           </div>
         </article>
       </div>

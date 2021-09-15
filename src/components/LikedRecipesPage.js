@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useFetchLikedRecipes } from "../api/useQuery";
+import RecipeThumbnail from "./RecipeThumbnail";
 
 const LikedRecipesPage = () => {
   const { data, isLoading, refetch } = useFetchLikedRecipes();
@@ -13,7 +14,6 @@ const LikedRecipesPage = () => {
       <section className="section-content">
         {!!data && (
           <ul className="thumbnails-container">
-            {console.log(data)}
             {data.map((recipe) => {
               return (
                 <RecipeThumbnail
