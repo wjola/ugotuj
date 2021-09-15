@@ -8,6 +8,7 @@ const MultipleFormInput = ({
   dataType,
   currentValue,
   setCurrentValue,
+  showWarning = false,
 }) => {
   const addInput = () => {
     setSavedData([...savedData, currentValue]);
@@ -74,6 +75,9 @@ const MultipleFormInput = ({
             );
           })}
       </ul>
+      {showWarning && savedData.length === 0 && (
+        <p className="recipe-form__warning">Dodaj element!</p>
+      )}
     </li>
   );
 };

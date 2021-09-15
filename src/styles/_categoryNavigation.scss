@@ -39,6 +39,38 @@
     text-align: center;
   }
 
+  &__chosen &__button {
+    background-color: #d23370;
+    color: white;
+
+    &::before,
+    &::after {
+      bottom: 0;
+      content: "";
+      height: 3rem;
+      position: absolute;
+      width: 3rem;
+    }
+
+    &::before {
+      background-image: radial-gradient(
+        circle at top left,
+        transparent 72%,
+        #d23370 74%
+      );
+      left: -3rem;
+    }
+
+    &::after {
+      background-image: radial-gradient(
+        circle at top right,
+        transparent 72%,
+        #d23370 74%
+      );
+      right: -3rem;
+    }
+  }
+
   &__button {
     align-items: center;
     background-color: transparent;

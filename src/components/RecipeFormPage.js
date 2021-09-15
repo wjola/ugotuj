@@ -15,6 +15,7 @@ const RecipeFormPage = ({
   recipeFile = null,
   onSubmit,
 }) => {
+  const [isValidationVisible, setIsValidationVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState(recipeName);
   const [chosenCategory, setChosenCategory] = useState(recipeCategory);
@@ -44,6 +45,7 @@ const RecipeFormPage = ({
     setCurrentSpice("");
     setCurrentStep("");
     setCurrentComment("");
+    setIsValidationVisible(false);
   };
 
   const chooseCategory = (category) => {
@@ -51,14 +53,30 @@ const RecipeFormPage = ({
   };
 
   const displayModal = () => {
-    setIsModalOpen(true);
+    if (isFormValid()) {
+      setIsModalOpen(true);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const recipeObject = createFormDataObject();
-    onSubmit(recipeObject);
-    cleanUpForm();
+    if (isFormValid()) {
+      const recipeObject = createFormDataObject();
+      onSubmit(recipeObject);
+      cleanUpForm();
+    }
+  };
+
+  const isFormValid = () => {
+    setIsValidationVisible(
+      !(
+        name &&
+        chosenCategory &&
+        ingredients.length > 0 &&
+        steps.length > 0 &&
+        file
+      )
+    );
   };
 
   const handleCloseRecipePreview = () => {
@@ -100,6 +118,9 @@ const RecipeFormPage = ({
                   );
                 })}
               </ul>
+              {isValidationVisible && !chosenCategory && (
+                <p className="recipe-form__warning">Wybierz kategorię!</p>
+              )}
             </li>
             <li className="recipe-form__element">
               <h5>Podaj nazwę potrawy</h5>
@@ -110,6 +131,9 @@ const RecipeFormPage = ({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
+              {isValidationVisible && !name && (
+                <p className="recipe-form__warning">Wpisz nazwę przepisu!</p>
+              )}
             </li>
             <MultipleFormInput
               savedData={spices}
@@ -126,6 +150,7 @@ const RecipeFormPage = ({
               dataType={"ingredients"}
               currentValue={currentIngredient}
               setCurrentValue={setCurrentIngredient}
+              showWarning={isValidationVisible}
             />
             <MultipleFormInput
               savedData={steps}
@@ -134,6 +159,7 @@ const RecipeFormPage = ({
               dataType={"steps"}
               currentValue={currentStep}
               setCurrentValue={setCurrentStep}
+              showWarning={isValidationVisible}
             />
             <MultipleFormInput
               savedData={comments}
@@ -146,7 +172,9 @@ const RecipeFormPage = ({
             <li className="recipe-form__element">
               <h5>Załącz zdjęcie</h5>
               <FileInput uploadedFile={file} storeFile={storeFile} />
-              {file && console.log(file)}
+              {isValidationVisible && !file && (
+                <p className="recipe-form__warning">Dodaj plik!</p>
+              )}
             </li>
           </ol>
         </form>
