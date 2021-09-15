@@ -8,7 +8,7 @@ const SearchPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    refetch();
+    searchPhrase && refetch();
   };
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const SearchPage = () => {
   return (
     <main className="main-container">
       <section className="section-content">
-        <form className="search-container">
+        <form className="search-container" onSubmit={handleSubmit}>
           <input
             type="text"
             className="search__input"
