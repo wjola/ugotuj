@@ -13,3 +13,10 @@
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   grid-gap: 2rem;
 }
+
+.recipes-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}

@@ -4,12 +4,12 @@ import CategoryNavigation from "./CategoryNavigation";
 
 const CategoryRecipesPage = (props) => {
   return (
-    <main>
+    <div className="recipes-container">
       <CategoryNavigation />
       <CategoryRecipesView
         categoryName={(props.match && props.match.params.category) || ""}
       />
-    </main>
+    </div>
   );
 };
 
