@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFetchRecipes } from "../api/useQuery";
 import RecipeThumbnail from "./RecipeThumbnail";
 
 const CategoryRecipesView = ({ categoryName = "" }) => {
   const { data, isLoading, refetch } = useFetchRecipes(categoryName);
-
-  useEffect(() => {
-    // refetch();
-  }, [categoryName]);
 
   return (
     <main className="category-recipes-container">

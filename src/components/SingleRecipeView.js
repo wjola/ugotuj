@@ -38,6 +38,7 @@ const SingleRecipeView = ({ isOpen = true, recipe, handleClose }) => {
   }, []);
 
   useEffect(() => {
+    console.log(isOpen);
     if (isOpen) {
       document.addEventListener("click", handleClickOutsideDialog);
       document.body.style.overflow = "hidden";

@@ -26,6 +26,12 @@ body {
   min-height: 100vh;
 }
 
+#root {
+  display: flex;
+  flex: 1 0 100%;
+  flex-direction: column;
+}
+
 .section-content {
   background-color: white;
   border-radius: 1rem;
@@ -62,6 +68,7 @@ body {
 
 .main-container {
   display: flex;
+  flex: 1;
   padding: 0 4rem 4rem;
   width: 100%;
 }

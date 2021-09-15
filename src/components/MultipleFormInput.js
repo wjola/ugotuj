@@ -31,7 +31,7 @@ const MultipleFormInput = ({
   return (
     <li className="recipe-form__element" data-type={dataType}>
       <h5>{headerText}</h5>
-      <div>
+      <div className="input-container">
         <input
           type="text"
           className="recipe-form__input"

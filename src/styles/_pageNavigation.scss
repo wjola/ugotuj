@@ -26,6 +26,14 @@
   padding: 1rem 3rem;
   position: relative;
   text-decoration: none;
+
+  &:hover .page-nav__icon {
+    animation-direction: alternate;
+    animation-duration: 0.3s;
+    animation-name: wave;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
 }
 
 .page-nav__element--active {
@@ -66,4 +74,14 @@
 .page-nav__icon {
   height: 3rem;
   margin-left: 2rem;
+}
+
+@keyframes wave {
+  from {
+    transform: rotate(-5deg);
+  }
+
+  to {
+    transform: rotate(5deg);
+  }
 }

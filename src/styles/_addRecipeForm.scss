@@ -84,7 +84,7 @@
   font-family: inherit;
   font-size: 5rem;
   line-height: 3rem;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   outline: none;
   padding: 0;
   text-decoration: none;
@@ -142,4 +142,8 @@ input[name="category"]:checked + label {
   list-style: none;
   margin-top: 3rem;
   width: 50%;
+}
+
+.input-container {
+  display: flex;
 }

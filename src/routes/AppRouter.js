@@ -24,7 +24,8 @@ const AppRouter = () => {
           component={CategoryRecipesPage}
         />
         <Route path="/add" component={AddRecipePage} />
-        <Route path="/search" component={SearchPage} />
+        <Route path="/search" component={SearchPage} exact={true} />
+        <Route path="/search/:recipeId" component={SearchPage} />
         <Route path="/liked" component={LikedRecipesPage} />
       </Switch>
     </BrowserRouter>

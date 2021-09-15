@@ -68,15 +68,14 @@ const RecipeFormPage = ({
   };
 
   const isFormValid = () => {
-    setIsValidationVisible(
-      !(
-        name &&
-        chosenCategory &&
-        ingredients.length > 0 &&
-        steps.length > 0 &&
-        file
-      )
-    );
+    const isValid =
+      name &&
+      chosenCategory &&
+      ingredients.length > 0 &&
+      steps.length > 0 &&
+      file;
+    setIsValidationVisible(!isValid);
+    return isValid;
   };
 
   const handleCloseRecipePreview = () => {
