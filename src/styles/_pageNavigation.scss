@@ -1,7 +1,15 @@
 .page-nav {
-  display: flex;
-  justify-content: center;
   margin-top: 5rem;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+
+    li + li {
+      margin-left: 3rem;
+    }
+  }
 }
 
 .page-nav__element {
@@ -13,12 +21,45 @@
   display: flex;
   font-size: 2rem;
   font-weight: 600;
+  margin-bottom: 2rem;
+  line-height: 3rem;
   padding: 1rem 3rem;
   position: relative;
   text-decoration: none;
+}
 
-  & + & {
-    margin-left: 3rem;
+.page-nav__element--active {
+  align-items: flex-start;
+  box-shadow: none;
+  border-radius: 3rem 3rem 0 0;
+  height: 100%;
+  margin-bottom: 0rem;
+
+  &::before,
+  &::after {
+    bottom: 0;
+    content: "";
+    height: 3rem;
+    position: absolute;
+    width: 3rem;
+  }
+
+  &::after {
+    background-image: radial-gradient(
+      circle at top left,
+      transparent 72%,
+      white 74%
+    );
+    left: -3rem;
+  }
+
+  &::before {
+    background-image: radial-gradient(
+      circle at top right,
+      transparent 72%,
+      white 74%
+    );
+    right: -3rem;
   }
 }
 

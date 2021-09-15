@@ -39,38 +39,6 @@
     text-align: center;
   }
 
-  &__chosen &__button {
-    background-color: #d23370;
-    color: white;
-
-    &::before,
-    &::after {
-      bottom: 0;
-      content: "";
-      height: 3rem;
-      position: absolute;
-      width: 3rem;
-    }
-
-    &::before {
-      background-image: radial-gradient(
-        circle at top left,
-        transparent 72%,
-        #d23370 74%
-      );
-      left: -3rem;
-    }
-
-    &::after {
-      background-image: radial-gradient(
-        circle at top right,
-        transparent 72%,
-        #d23370 74%
-      );
-      right: -3rem;
-    }
-  }
-
   &__button {
     align-items: center;
     background-color: transparent;
@@ -89,17 +57,21 @@
     text-decoration: none;
     width: 100%;
 
-    &:hover {
+    &:hover,
+    &--chosen {
       background-color: #d23370;
       color: white;
     }
 
-    &:hover .category__icon {
+    &:hover .category__icon,
+    &--chosen .category__icon {
       filter: invert(100%);
     }
 
     &:hover::before,
-    &:hover::after {
+    &:hover::after,
+    &--chosen::before,
+    &--chosen::after {
       bottom: 0;
       content: "";
       height: 3rem;
@@ -107,7 +79,8 @@
       width: 3rem;
     }
 
-    &:hover::before {
+    &:hover::before,
+    &--chosen::before {
       background-image: radial-gradient(
         circle at top left,
         transparent 72%,
@@ -116,7 +89,8 @@
       left: -3rem;
     }
 
-    &:hover::after {
+    &:hover::after,
+    &--chosen::after {
       background-image: radial-gradient(
         circle at top right,
         transparent 72%,

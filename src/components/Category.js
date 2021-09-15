@@ -7,7 +7,7 @@ const Category = ({ displayedName, categoryName, iconPath }) => {
       <NavLink
         to={`/recipes/${categoryName}`}
         className="category__button"
-        activeClassName="category--chosen"
+        activeClassName="category__button--chosen"
       >
         <img src={iconPath} className="category__icon" />
         {displayedName}

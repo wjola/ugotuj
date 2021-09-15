@@ -13,7 +13,7 @@ const AppRouter = () => {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path="/" component={HomePage} exact={true} />
+        <Route path="/recipes" component={HomePage} exact={true} />
         <Route
           path="/recipes/:category"
           component={CategoryRecipesPage}
