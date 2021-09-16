@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import LikeButton from "./LikeButton";
 
-const SingleRecipeView = ({ isOpen = true, recipe, handleClose }) => {
+const SingleRecipeView = ({
+  isOpen = true,
+  recipe,
+  handleClose,
+  likeButton,
+}) => {
   const portalTarget = document.getElementById("recipe-modal");
   const [imgPreview, setImgPreview] = useState(null);
 
@@ -60,7 +66,8 @@ const SingleRecipeView = ({ isOpen = true, recipe, handleClose }) => {
         ></button>
         <div className="recipe__photo-container">
           <figure className="recipe__photo">
-            <img src={imgPreview} />
+            <img src={imgPreview} className="recipe__photo-img" />
+            {likeButton}
           </figure>
         </div>
         <article className="recipe__text-container">

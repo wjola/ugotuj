@@ -74,3 +74,80 @@ body {
   padding: 0 4rem 4rem;
   width: 100%;
 }
+
+.like-icon {
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  bottom: -2.5rem;
+  height: 5rem;
+  padding: 0.75rem;
+  position: absolute;
+  right: -2.5rem;
+  width: 5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--big {
+    z-index: 11;
+
+    & img {
+      filter: invert(23%) sepia(52%) saturate(3713%) hue-rotate(318deg)
+        brightness(85%) contrast(104%);
+    }
+
+    &:hover img {
+      animation-direction: alternate;
+      animation-duration: 0.3s;
+      animation-name: wave;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+
+    &::after {
+      background-color: rgba(255, 255, 255, 0.582);
+      border-radius: 50%;
+      bottom: 50%;
+      content: "";
+      height: 3rem;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, 50%);
+      transition: width 0.3s, height 0.3s;
+      width: 3rem;
+      z-index: -2;
+    }
+
+    &:active::after {
+      width: 8rem;
+      height: 8rem;
+    }
+  }
+
+  & img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &--small {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    left: 0.7rem;
+    top: 0.7rem;
+    padding: 1rem;
+    transform: scale(0.7);
+
+    &:hover img {
+      filter: invert(23%) sepia(52%) saturate(3713%) hue-rotate(318deg)
+        brightness(85%) contrast(104%);
+    }
+
+    & img {
+      filter: invert(100%) contrast(100%) brightness(100%);
+      opacity: 0.8;
+    }
+  }
+}

@@ -11,7 +11,7 @@ const PageNavigation = () => {
       <ul className="page-nav__list">
         <li>
           <NavLink
-            to="/recipes"
+            to="/recipes/soups"
             className="page-nav__element"
             activeClassName="page-nav__element--active"
           >

@@ -33,9 +33,22 @@ const usePostRecipe = () => {
   });
 };
 
+const usePatchRecipeLike = () => {
+  return useMutation((data) => {
+    return fetch(`http://localhost:5000/recipe/${data.recipeId}`, {
+      method: "PATCH",
+      header: { "Content-Type": "application/json" },
+      body: JSON.stringify({ liked: data.liked }),
+    }).then((result) => {
+      return result.json();
+    });
+  });
+};
+
 export {
   useFetchRecipes,
   useFetchLikedRecipes,
   useSearchRecipes,
   usePostRecipe,
+  usePatchRecipeLike,
 };

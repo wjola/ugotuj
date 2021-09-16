@@ -7,7 +7,7 @@
   position: relative;
   transition: filter 0.2s;
 
-  &:hover {
+  a:hover &__img {
     filter: brightness(70%);
   }
 

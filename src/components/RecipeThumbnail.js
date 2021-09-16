@@ -2,12 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useHistory, useLocation } from "react-router";
 import SingleRecipeView from "./SingleRecipeView";
+import LikeButton from "./LikeButton";
 
-const RecipeThumbnail = ({ recipe }) => {
+const RecipeThumbnail = ({ recipe, handleLikeChange }) => {
+  const history = useHistory();
   const location = useLocation();
   const { recipeId } = useParams();
 
-  const history = useHistory();
+  const likeButton = (
+    <LikeButton
+      recipeId={recipe.id}
+      liked={recipe.liked}
+      handleLikeChange={handleLikeChange}
+    />
+  );
+
   const [shouldModalBeOpened, setShouldModalBeOpened] = useState(false);
 
   useEffect(() => {
@@ -22,15 +31,16 @@ const RecipeThumbnail = ({ recipe }) => {
           <figcaption className="thumbnail__name">{recipe.name}</figcaption>
         </figure>
       </Link>
+      {likeButton}
       {shouldModalBeOpened && (
         <SingleRecipeView
           isOpen={shouldModalBeOpened}
           recipe={recipe}
           handleClose={() => {
-            // history.push(`${location.pathname}`);
             history.goBack();
             setShouldModalBeOpened(false);
           }}
+          likeButton={likeButton}
         />
       )}
     </li>

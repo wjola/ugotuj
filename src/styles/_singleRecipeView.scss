@@ -48,17 +48,17 @@
     width: 100%;
     transform: rotate(-4deg);
   }
+}
 
-  & img {
-    border: 3px solid white;
-    height: 100%;
-    left: 0;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-  }
+.recipe__photo-img {
+  border: 3px solid white;
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .recipe__text-container {

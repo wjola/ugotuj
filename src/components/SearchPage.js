@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSearchRecipes } from "../api/useQuery";
-import RecipeThumbnail from "./RecipeThumbnail";
+import Recipes from "./Recipes";
 
 const SearchPage = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
@@ -49,28 +49,7 @@ const SearchPage = () => {
               Wyniki wyszukiwania dla:{" "}
               <span className="search-phrase">{searchPhrase}</span>
             </h3>
-            <ul className="thumbnails-container">
-              {data.map((recipe) => {
-                return (
-                  <RecipeThumbnail
-                    key={`${recipe._id}s`}
-                    recipe={{
-                      id: recipe._id,
-                      name: recipe.name,
-                      photo: `http://localhost:5000/${recipe.img.replace(
-                        "\\",
-                        "/"
-                      )}`,
-                      category: recipe.category,
-                      spices: recipe.spices,
-                      ingredients: recipe.ingredients,
-                      steps: recipe.steps,
-                      comments: recipe.comments,
-                    }}
-                  />
-                );
-              })}
-            </ul>
+            <Recipes data={data} />
           </div>
         )}
       </section>
