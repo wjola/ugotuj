@@ -18,11 +18,9 @@ const CategoryFormInput = ({
         onChange={(e) => e.target.checked && chooseCategory(e.target.value)}
         checked={chosenCategory === categoryName}
       />
-      <label htmlFor={categoryName}>
-        <figure>
-          <img src={iconPath} className="category__icon" />
-          <figcaption className="category__caption">{displayedName}</figcaption>
-        </figure>
+      <label htmlFor={categoryName} className="input__category__label">
+        <img src={iconPath} className="category__icon" />
+        <span className="category__caption">{displayedName}</span>
       </label>
     </li>
   );

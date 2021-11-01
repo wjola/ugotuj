@@ -5,22 +5,35 @@
   justify-content: center;
   list-style: none;
   padding-top: 2rem;
+
+  @media (max-width: 1100px) {
+    padding-top: 1rem;
+  }
 }
 
 .category {
   list-style-type: none;
+  margin-right: 3rem;
+  text-align: center;
   width: 10rem;
 
-  & label {
-    display: inline-block;
+  @media (max-width: 1100px) {
+    width: 8rem;
+    margin-right: 1rem;
   }
 
   &--small {
-    width: 5rem;
+    margin-bottom: 2rem;
+    margin-right: 3rem;
+    width: auto;
+
+    @media (max-width: 1100px) {
+      margin-right: 3rem;
+    }
   }
 
-  & + & {
-    margin-left: 4rem;
+  &:last-of-type {
+    margin-right: 0;
   }
 
   &:hover &__icon {
@@ -30,7 +43,11 @@
   &__icon {
     margin-bottom: 0.8rem;
     transition: transform 0.2s ease-out;
-    width: 100%;
+    width: 6rem;
+
+    @media (max-width: 1100px) {
+      width: 4rem;
+    }
   }
 
   &__caption {
@@ -56,6 +73,10 @@
     position: relative;
     text-decoration: none;
     width: 100%;
+
+    @media (max-width: 1100px) {
+      padding: 2rem 2rem 1rem;
+    }
 
     &:hover,
     &--chosen {

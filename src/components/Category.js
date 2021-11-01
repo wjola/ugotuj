@@ -10,7 +10,7 @@ const Category = ({ displayedName, categoryName, iconPath }) => {
         activeClassName="category__button--chosen"
       >
         <img src={iconPath} className="category__icon" />
-        {displayedName}
+        <span className="category__caption">{displayedName}</span>
       </NavLink>
     </li>
   );

@@ -98,7 +98,7 @@ const RecipeFormPage = ({
 
   return (
     <main className="main-container">
-      <section className="section-content">
+      <section className="section-content section-content--form">
         <form className="recipe-form">
           <ol>
             <li className="recipe-form__element">
@@ -178,24 +178,26 @@ const RecipeFormPage = ({
           </ol>
         </form>
         <button
-          className="button"
+          className="button recipe-form__button"
           type="button"
           formTarget="_self"
           onClick={handleSubmit}
         >
           Dodaj przepis
         </button>
-        <button
-          className="button button--empty"
-          type="button"
-          formTarget="_self"
-          onClick={displayModal}
-        >
-          Podgląd
-        </button>
-        <button className="button button--empty" onClick={cleanUpForm}>
-          Wyczyść formularz
-        </button>
+        <div className="button-container">
+          <button
+            className="button button--empty"
+            type="button"
+            formTarget="_self"
+            onClick={displayModal}
+          >
+            Podgląd
+          </button>
+          <button className="button button--empty" onClick={cleanUpForm}>
+            Wyczyść formularz
+          </button>
+        </div>
       </section>
       <SingleRecipeView
         isOpen={isModalOpen}

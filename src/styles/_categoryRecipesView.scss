@@ -6,6 +6,10 @@
   flex: 1;
   padding: 4rem;
   width: 100%;
+
+  @media (max-width: 700px) {
+    padding: 2rem;
+  }
 }
 
 .thumbnails-container {

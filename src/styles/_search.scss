@@ -24,6 +24,10 @@
     outline: none;
     background-color: transparent;
   }
+
+  @media (max-width: 700px) {
+    width: 80%;
+  }
 }
 
 .search__header {

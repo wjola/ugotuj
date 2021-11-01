@@ -1,5 +1,9 @@
 html {
   font-size: 62.5%;
+
+  @media (max-width: 900px) {
+    font-size: 50%;
+  }
 }
 
 *,
@@ -40,11 +44,16 @@ body {
   flex: 1;
   padding: 4rem 6rem;
   width: 100%;
+
+  @media (max-width: 700px) {
+    border-radius: 0;
+    padding: 3rem 4rem;
+  }
 }
 
 .button {
   background-color: #cc185d;
-  border: 3px solid #cc185d;
+  border: 2px solid #cc185d;
   border-radius: 10rem;
   color: white;
   cursor: pointer;
@@ -73,6 +82,10 @@ body {
   flex: 1;
   padding: 0 4rem 4rem;
   width: 100%;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
 }
 
 .like-icon {
