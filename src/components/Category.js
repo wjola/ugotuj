@@ -5,7 +5,7 @@ const Category = ({ displayedName, categoryName, iconPath }) => {
   return (
     <li className="category">
       <NavLink
-        to={`/recipes/${categoryName}`}
+        to={`/recipes/${categoryName}?`}
         className="category__button"
         activeClassName="category__button--chosen"
       >

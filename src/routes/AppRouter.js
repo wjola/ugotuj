@@ -15,7 +15,7 @@ const AppRouter = () => {
       <Switch>
         <Route path="/recipes" component={HomePage} exact={true} />
         <Route
-          path="/recipes/:category/:recipeId?"
+          path="/recipes/:category?/:recipeId?"
           component={CategoryRecipesPage}
         />
         <Route path="/add" component={AddRecipePage} />

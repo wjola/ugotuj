@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFetchLikedRecipes } from "../api/useQuery";
 import Recipes from "./Recipes";
 
 const LikedRecipesPage = () => {
-  const { data, isLoading, isFetching } = useFetchLikedRecipes();
-
-  useEffect(() => {
-    console.log("feczuje");
-  }, [isFetching]);
+  const { data, isLoading } = useFetchLikedRecipes();
 
   return (
     <main className="main-container">

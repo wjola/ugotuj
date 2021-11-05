@@ -1,17 +1,9 @@
 import React from "react";
 import RecipeThumbnail from "./RecipeThumbnail";
-import { usePatchRecipeLike } from "../api/useQuery";
 
 const Recipes = ({ data }) => {
-  // const mutation = usePatchRecipeLike();
-
   const handleLikeChange = (recipeId, liked) => {
-    mutation.mutate(
-      { recipeId, liked: !liked } //,
-      // {
-      //   onSuccess: () => refetch(),
-      // }
-    );
+    mutation.mutate({ recipeId, liked: !liked });
   };
 
   return (
