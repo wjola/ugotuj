@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Category = ({ displayedName, categoryName, iconPath }) => {
   return (
-    <li className="category">
+    <div className="category">
       <NavLink
         to={`/recipes/${categoryName}?`}
         className="category__button"
@@ -12,7 +12,7 @@ const Category = ({ displayedName, categoryName, iconPath }) => {
         <img src={iconPath} className="category__icon" />
         <span className="category__caption">{displayedName}</span>
       </NavLink>
-    </li>
+    </div>
   );
 };
 

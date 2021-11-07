@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import AppRouter from "./routes/AppRouter";
+import "swiper/css";
+import "swiper/css/navigation";
 import "./styles/main.scss";
 
 const queryClient = new QueryClient();
