@@ -1,7 +1,6 @@
 import React from "react";
-import { Route } from "react-router";
+import { Route, Redirect } from "react-router";
 import { BrowserRouter, Switch } from "react-router-dom";
-import HomePage from "../components/HomePage";
 import AddRecipePage from "../components/AddRecipePage";
 import LikedRecipesPage from "../components/LikedRecipesPage";
 import SearchPage from "../components/SearchPage";
@@ -13,7 +12,12 @@ const AppRouter = () => {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path="/recipes" component={HomePage} exact={true} />
+        <Route path="/" exact={true}>
+          <Redirect to="/recipes/soups" />
+        </Route>
+        <Route path="/recipes" exact={true}>
+          <Redirect to="/recipes/soups" />
+        </Route>
         <Route
           path="/recipes/:category?/:recipeId?"
           component={CategoryRecipesPage}
