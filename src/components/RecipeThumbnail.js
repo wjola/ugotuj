@@ -9,14 +9,6 @@ const RecipeThumbnail = ({ recipe, handleLikeChange }) => {
   const location = useLocation();
   const { recipeId } = useParams();
 
-  const likeButton = (
-    <LikeButton
-      recipeId={recipe.id}
-      liked={recipe.liked}
-      handleLikeChange={handleLikeChange}
-    />
-  );
-
   const [shouldModalBeOpened, setShouldModalBeOpened] = useState(false);
 
   useEffect(() => {
@@ -31,7 +23,12 @@ const RecipeThumbnail = ({ recipe, handleLikeChange }) => {
           <figcaption className="thumbnail__name">{recipe.name}</figcaption>
         </figure>
       </Link>
-      {likeButton}
+      <LikeButton
+        recipeId={recipe.id}
+        liked={recipe.liked}
+        handleLikeChange={handleLikeChange}
+        isRecipeOpen={shouldModalBeOpened}
+      />
       {shouldModalBeOpened && (
         <SingleRecipeView
           isOpen={shouldModalBeOpened}
@@ -40,7 +37,14 @@ const RecipeThumbnail = ({ recipe, handleLikeChange }) => {
             history.goBack();
             setShouldModalBeOpened(false);
           }}
-          likeButton={likeButton}
+          likeButton={
+            <LikeButton
+              recipeId={recipe.id}
+              liked={recipe.liked}
+              handleLikeChange={handleLikeChange}
+              isRecipeOpen={shouldModalBeOpened}
+            />
+          }
         />
       )}
     </li>
