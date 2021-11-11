@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import LikeButton from "./LikeButton";
+import useDeviceClass from "../utils/hooks/useDeviceClass";
+import CloseIcon from "../../images/close.svg";
 
 const SingleRecipeView = ({
   isOpen = true,
@@ -10,9 +11,10 @@ const SingleRecipeView = ({
 }) => {
   const portalTarget = document.getElementById("recipe-modal");
   const [imgPreview, setImgPreview] = useState(null);
+  const device = useDeviceClass();
 
   const handleClickOutsideDialog = (e) => {
-    if (e.target.classList[0] == "modal") {
+    if (device === "desktop" && e.target.classList[0] == "modal") {
       handleClose();
     }
   };
@@ -31,39 +33,34 @@ const SingleRecipeView = ({
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener("click", handleClickOutsideDialog);
       document.body.style.overflow = "hidden";
 
       getImagePreview();
     }
 
     return () => {
-      document.removeEventListener("click", handleClickOutsideDialog);
       document.body.style.overflow = "unset";
     };
   }, []);
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener("click", handleClickOutsideDialog);
       document.body.style.overflow = "hidden";
 
       getImagePreview();
 
       return () => {
-        document.removeEventListener("click", handleClickOutsideDialog);
         document.body.style.overflow = "unset";
       };
     }
   }, [isOpen]);
 
   return ReactDOM.createPortal(
-    <dialog open={isOpen} className="modal">
+    <dialog open={isOpen} className="modal" onClick={handleClickOutsideDialog}>
       <div className="recipe-container">
-        <button
-          className="button--close"
-          onClick={() => handleClose()}
-        ></button>
+        <button className="button--close" onClick={() => handleClose()}>
+          <img className="button--close-img" src={CloseIcon} />
+        </button>
         <div className="recipe__photo-container">
           <figure className="recipe__photo">
             <img src={imgPreview} className="recipe__photo-img" />

@@ -1,0 +1,9 @@
+@keyframes wave {
+  from {
+    transform: rotate(-5deg);
+  }
+
+  to {
+    transform: rotate(5deg);
+  }
+}

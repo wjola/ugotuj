@@ -27,7 +27,6 @@ const RecipeThumbnail = ({ recipe, handleLikeChange }) => {
         recipeId={recipe.id}
         liked={recipe.liked}
         handleLikeChange={handleLikeChange}
-        isRecipeOpen={shouldModalBeOpened}
       />
       {shouldModalBeOpened && (
         <SingleRecipeView
