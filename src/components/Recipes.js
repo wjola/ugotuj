@@ -16,7 +16,7 @@ const Recipes = ({ data }) => {
               recipe={{
                 id: recipe._id,
                 name: recipe.name,
-                photo: `http://localhost:5000/${recipe.img.replace("\\", "/")}`,
+                photo: recipe.img.replace("\\", "/"),
                 category: recipe.category,
                 spices: recipe.spices,
                 ingredients: recipe.ingredients,

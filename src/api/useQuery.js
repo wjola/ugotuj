@@ -2,27 +2,29 @@ import { useQuery, useMutation } from "react-query";
 
 export const useFetchRecipes = (category = "") => {
   return useQuery(["categoryRecipes", category], () =>
-    fetch(`http://localhost:5000/recipes/${category}`).then((res) => res.json())
+    fetch(`${REACT_APP_BACKEND_URL}/recipes/${category}`).then((res) => {
+      return res.json();
+    })
   );
 };
 
 export const useFetchLikedRecipes = () => {
   return useQuery("likedRecipes", () =>
-    fetch(`http://localhost:5000/recipes/liked`).then((res) => res.json())
+    fetch(REACT_APP_BACKEND_URL + `/recipes/liked`).then((res) => res.json())
   );
 };
 
 export const useSearchRecipes = (searchPhrase = "") => {
   return useQuery("search", () =>
-    fetch(`http://localhost:5000/recipes/search/${searchPhrase}`).then((res) =>
-      res.json()
+    fetch(REACT_APP_BACKEND_URL + `/recipes/search/${searchPhrase}`).then(
+      (res) => res.json()
     )
   );
 };
 
 export const usePostRecipe = () => {
   return useMutation((recipe) => {
-    return fetch(`http://localhost:5000/recipes`, {
+    return fetch(REACT_APP_BACKEND_URL + `/recipes`, {
       method: "POST",
       header: { "Content-Type": "multipart/form-data" },
       body: recipe,
@@ -32,7 +34,7 @@ export const usePostRecipe = () => {
 
 export const usePatchRecipeLike = () => {
   return useMutation((data) => {
-    return fetch(`http://localhost:5000/recipe/${data.recipeId}`, {
+    return fetch(REACT_APP_BACKEND_URL + `/recipe/${data.recipeId}`, {
       method: "PATCH",
       header: { "Content-Type": "application/json" },
       body: JSON.stringify({ liked: data.liked }),
