@@ -6,6 +6,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
+    "deploy": "gh-pages -d public",
     "dev-server": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
@@ -32,6 +33,8 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "compressorjs": "^1.1.1",
+    "gh-pages": "^3.2.3",
     "node-sass": "^6.0.1",
     "nvm": "^0.0.4",
     "react": "^17.0.2",

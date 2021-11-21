@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Compressor from "compressorjs";
 import { categories } from "../utils/categories";
 import CategoryFormInput from "./CategoryFormInput";
 import MultipleFormInput from "./MultipleFormInput";
@@ -29,8 +30,17 @@ const RecipeFormPage = ({
   const [comments, setComments] = useState(recipeComments);
   const [file, setFile] = useState(recipeFile);
 
-  const storeFile = (file) => {
-    setFile(file);
+  const storeFile = async (file) => {
+    new Compressor(file, {
+      quality: 0.7,
+      success: (compressedResult) => {
+        setFile(
+          new File([compressedResult], file.name, {
+            type: compressedResult.type,
+          })
+        );
+      },
+    });
   };
 
   const cleanUpForm = () => {
