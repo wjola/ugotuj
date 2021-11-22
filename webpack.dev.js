@@ -7,13 +7,11 @@ module.exports = merge(common, {
   mode: "development",
   devServer: {
     static: {
-      directory: path.join(__dirname, "public"),
+      directory: path.join(__dirname, "/"),
     },
-    historyApiFallback: {
-      index: "/",
-    },
+    historyApiFallback: { index: "./index.html" },
     port: 9000,
-    hot: true,
+    watchFiles: "*",
   },
   plugins: [
     new webpack.DefinePlugin({
