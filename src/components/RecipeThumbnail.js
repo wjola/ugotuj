@@ -29,7 +29,7 @@ const RecipeThumbnail = ({ recipe, handleLikeChange }) => {
               setImageLoaded(true);
             }}
           />
-          {imageLoaded && <Skeleton height="100%" />}
+          {!imageLoaded && <Skeleton height="100%" />}
           <figcaption className="thumbnail__name">{recipe.name}</figcaption>
         </figure>
       </Link>
