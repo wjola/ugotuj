@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Switch } from "react-router";
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import { HashRouter, Route, Redirect } from "react-router-dom";
 import PageLoader from "../components/PageLoader";
 
 const CategoryRecipesPage = React.lazy(() =>
@@ -15,7 +15,7 @@ const AddRecipePage = React.lazy(() => import("../components/AddRecipePage"));
 
 const AppRouter = () => {
   return (
-    <BrowserRouter basename={PUBLIC_URL}>
+    <HashRouter basename={PUBLIC_URL}>
       <Suspense fallback={<PageLoader />}>
         <Header />
         <Switch>
@@ -34,7 +34,7 @@ const AppRouter = () => {
           <Route path="/liked/:recipeId?" component={LikedRecipesPage} />
         </Switch>
       </Suspense>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
