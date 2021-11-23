@@ -180,3 +180,24 @@ body {
     bottom: 2rem;
   }
 }
+
+.loader-container {
+  background-color: white;
+  border-radius: 20rem;
+  height: 20rem;
+  left: 50%;
+  margin: 0 auto;
+  opacity: 0.9;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+}
+
+.loader__img {
+  animation: 2s rotate360 infinite linear;
+  filter: invert(94%) sepia(60%) saturate(2104%) hue-rotate(290deg)
+    brightness(87%) contrast(126%);
+  opacity: 0.8;
+  width: 100%;
+}

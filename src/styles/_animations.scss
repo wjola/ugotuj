@@ -7,3 +7,9 @@
     transform: rotate(5deg);
   }
 }
+
+@keyframes rotate360 {
+  to {
+    transform: rotate(360deg);
+  }
+}
