@@ -107,8 +107,8 @@ const FileInput = ({ uploadedFile, storeFile }) => {
         {!!uploadedFile && (
           <p className="file__text">
             Wybrano plik
-            <strong className="file__name">{uploadedFile.name}</strong>
-            Aby zmienić plik, kliknij lub przenieś go tutaj.
+            <strong className="file__name">{` ${uploadedFile.name}`}</strong>
+            {`. Aby zmienić plik, kliknij lub przenieś go tutaj.`}
           </p>
         )}
       </label>

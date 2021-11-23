@@ -45,6 +45,22 @@
       top: 0rem;
       width: 4rem;
     }
+
+    @media (max-width: 500px) {
+      &::before {
+        top: -2px;
+        left: calc(-6rem - 2px);
+        width: calc(3rem + 4px);
+        height: calc(3rem + 4px);
+      }
+
+      &::after {
+        font-size: 2rem;
+        height: 3rem;
+        line-height: 2rem;
+        width: 3rem;
+      }
+    }
   }
 
   &__input {
@@ -75,9 +91,12 @@
 
   &__button {
     margin-left: 1rem;
+
     @media (max-width: 700px) {
       display: block;
-      margin: 0 auto;
+      margin: 0;
+      padding: 1.5rem 2rem;
+      width: 100%;
     }
   }
 }
@@ -175,12 +194,20 @@ input[name="category"]:checked + label {
   @media (max-width: 700px) {
     padding: 6rem 8rem;
   }
+
+  @media (max-width: 500px) {
+    padding: 4rem 4rem 4rem 8rem;
+  }
 }
 
 .button-container {
   display: inline-block;
   & > * {
     margin-left: 2rem;
+
+    @media (max-width: 500px) {
+      margin: 1rem 0 0;
+    }
   }
 
   @media (max-width: 700px) {

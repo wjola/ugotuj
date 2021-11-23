@@ -54,12 +54,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   width: 50%;
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 }
 
 .file__text {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  text-align: center;
 }
 
 .file__preview {

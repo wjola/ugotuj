@@ -10,6 +10,9 @@
       margin-left: 3rem;
     }
   }
+  @media (max-width: 500) {
+    margin-top: 3rem;
+  }
 }
 
 .page-nav__element {
@@ -49,6 +52,16 @@
         height: 2.5rem;
         margin: 0;
       }
+    }
+  }
+  @media (max-width: 500px) {
+    & p {
+      display: none;
+    }
+
+    & .page-nav__icon {
+      height: 2.5rem;
+      margin: 0;
     }
   }
 }

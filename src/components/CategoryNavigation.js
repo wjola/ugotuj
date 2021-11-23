@@ -26,10 +26,10 @@ const CategoryNavigation = () => {
           710: {
             slidesPerView: 5,
           },
-          500: {
+          425: {
             slidesPerView: 4,
           },
-          470: {
+          300: {
             slidesPerView: 3,
           },
         }}

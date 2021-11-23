@@ -6,7 +6,7 @@ import MultipleFormInput from "./MultipleFormInput";
 import FileInput from "./FileInput";
 import SingleRecipeView from "./SingleRecipeView";
 
-const RecipeFormPage = ({
+const RecipeForm = ({
   recipeName = "",
   recipeCategory = "",
   recipeSpices = [],
@@ -197,14 +197,17 @@ const RecipeFormPage = ({
         </button>
         <div className="button-container">
           <button
-            className="button button--empty"
+            className="button button--empty recipe-form__button"
             type="button"
             formTarget="_self"
             onClick={displayModal}
           >
             Podgląd
           </button>
-          <button className="button button--empty" onClick={cleanUpForm}>
+          <button
+            className="button button--empty recipe-form__button"
+            onClick={cleanUpForm}
+          >
             Wyczyść formularz
           </button>
         </div>
@@ -226,4 +229,4 @@ const RecipeFormPage = ({
   );
 };
 
-export default RecipeFormPage;
+export default RecipeForm;
