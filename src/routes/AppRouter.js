@@ -15,7 +15,7 @@ const AddRecipePage = React.lazy(() => import("../components/AddRecipePage"));
 
 const AppRouter = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={PUBLIC_URL}>
       <Suspense fallback={<PageLoader />}>
         <Header />
         <Switch>

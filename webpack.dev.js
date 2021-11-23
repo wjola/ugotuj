@@ -15,7 +15,8 @@ module.exports = merge(common, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      REACT_APP_BACKEND_URL: JSON.stringify("http://localhost:5000"),
+      BACKEND_URL: JSON.stringify("http://localhost:5000"),
+      PUBLIC_URL: JSON.stringify(""),
     }),
   ],
 });
