@@ -84,6 +84,10 @@
     top: 0;
     width: 100%;
     transform: rotate(-4deg);
+
+    @media (max-width: 700px) {
+      display: none;
+    }
   }
 
   @media (max-width: 1100px) {

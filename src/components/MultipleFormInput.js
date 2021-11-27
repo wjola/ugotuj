@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import TrashIcon from "../../images/trash.svg";
 
 const MultipleFormInput = ({
@@ -10,22 +10,24 @@ const MultipleFormInput = ({
   setCurrentValue,
   showWarning = false,
 }) => {
+  const inputRef = useRef(null);
+
   const addInput = () => {
-    setSavedData([...savedData, currentValue]);
-    setCurrentValue("");
+    if (currentValue !== "") {
+      setSavedData([...savedData, currentValue]);
+      setCurrentValue("");
+      inputRef.current.focus();
+    }
   };
 
   const handleInputKeyUp = (e) => {
-    if (e.key === "Enter" && currentValue !== "") {
+    if (e.key === "Enter") {
       addInput();
     }
   };
 
   const handleInputChange = (e) => {
-    const inputValue = e.target.value.trim();
-    if (inputValue !== "") {
-      setCurrentValue(e.target.value);
-    }
+    setCurrentValue(e.target.value);
   };
 
   return (
@@ -39,6 +41,7 @@ const MultipleFormInput = ({
           value={currentValue}
           onChange={handleInputChange}
           onKeyUp={handleInputKeyUp}
+          ref={inputRef}
         />
         <button
           className="button--add"
