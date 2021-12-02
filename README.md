@@ -17,3 +17,10 @@ Backend is in separate repository.
 * Adding new recipe including image upload
 * Searching for recipes by recipe name
 * Marking recipe as favourite
+
+## Screenshots
+Overview of category recipes
+![ugotuj-desktop-home.png](/ugotuj-desktop-home.png)
+
+Single recipe view
+![ugotuj-desktop-recipe.png](/ugotuj-desktop-recipe.png)
